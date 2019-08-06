@@ -17,9 +17,9 @@ _pr_rust() {
     if is-recursive-exist Cargo.toml ; then
       pr_rust="$RUST_PREFIX"
       
-      rust_version=$(rustc --version | awk '{print $2}')
+      rust_version=$(rustc --version | cut -d' ' -f2)
       if [[ $CLICOLOR = 1 ]]; then
-        pr_rust+="%{$c[green]${c_bold}%}𝗥%{$c_reset%} %{$c[blue]$c_bold%}$rust_version%{$c_reset%}"
+        pr_rust+="%{$c[red]${c_bold}%}𝗥%{$c_reset%} %{$c[blue]$c_bold%}$rust_version%{$c_reset%}"
       else
         pr_rust+="𝗥 $rust_version"
       fi
