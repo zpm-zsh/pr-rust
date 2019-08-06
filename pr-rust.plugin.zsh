@@ -12,7 +12,7 @@ fi
 pr_rust=""
 
 _pr_rust() {
- 
+  
   if (( $+commands[rustc] )); then
     if is-recursive-exist Cargo.toml ; then
       pr_rust="$RUST_PREFIX"
@@ -25,10 +25,11 @@ _pr_rust() {
       fi
       
       pr_rust+="$RUST_SUFIX"
-      else
-      pr_rust=""
+      return 0
     fi
   fi
+  
+  pr_rust=""
   
 }
 
