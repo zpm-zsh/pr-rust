@@ -31,5 +31,7 @@ _pr_rust() {
   fi
   
 }
+
 _pr_rust
+autoload -Uz add-zsh-hook
 add-zsh-hook chpwd _pr_rust
