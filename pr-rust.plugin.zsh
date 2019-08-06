@@ -14,7 +14,7 @@ pr_rust=""
 _pr_rust() {
   
   if (( $+commands[rustc] )); then
-    if is-recursive-exist Cargo.toml ; then
+    if is-recursive-exist Cargo.toml >/dev/null ; then
       pr_rust="$RUST_PREFIX"
       
       rust_version=$(rustc --version | cut -d' ' -f2)
