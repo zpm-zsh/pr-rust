@@ -18,11 +18,7 @@ _pr_rust() {
       pr_rust="$RUST_PREFIX"
       
       rust_version=$(rustc --version | cut -d' ' -f2)
-      if [[ $CLICOLOR = 1 ]]; then
-        pr_rust+="%{$c[red]${c_bold}%}𝗥%{$c_reset%} %{$c[blue]$c_bold%}$rust_version%{$c_reset%}"
-      else
-        pr_rust+="𝗥 $rust_version"
-      fi
+      pr_rust+="%{$c[red]${c_bold}%}𝗥%{$c_reset%} %{$c[blue]$c_bold%}$rust_version%{$c_reset%}"
       
       pr_rust+="$RUST_SUFIX"
       return 0
