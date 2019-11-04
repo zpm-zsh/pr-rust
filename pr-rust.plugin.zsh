@@ -5,7 +5,7 @@ DEPENDENCES_ZSH+=( zpm-zsh/helpers zpm-zsh/colors )
 RUST_PREFIX=${RUST_PREFIX:-" "}
 RUST_SUFIX=${RUST_SUFIX:-""}
 
-if (( $+function[zpm] )); then
+if (( $+functions[zpm] )); then
   zpm zpm-zsh/helpers zpm-zsh/colors
 fi
 
