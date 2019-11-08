@@ -6,7 +6,7 @@ RUST_PREFIX=${RUST_PREFIX:-" "}
 RUST_SUFIX=${RUST_SUFIX:-""}
 
 if (( $+functions[zpm] )); then
-  zpm zpm-zsh/helpers zpm-zsh/colors
+  zpm zpm-zsh/helpers,inline zpm-zsh/colors,inline
 fi
 
 pr_rust=""
