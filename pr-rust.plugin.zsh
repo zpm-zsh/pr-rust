@@ -2,13 +2,16 @@
 
 DEPENDENCES_ZSH+=( zpm-zsh/helpers zpm-zsh/colors )
 
+typeset -g RUST_PREFIX
 RUST_PREFIX=${RUST_PREFIX:-" "}
+typeset -g RUST_SUFIX
 RUST_SUFIX=${RUST_SUFIX:-""}
 
 if (( $+functions[zpm] )); then
   zpm zpm-zsh/helpers,inline zpm-zsh/colors,inline
 fi
 
+typeset -g pr_rust
 pr_rust=""
 
 _pr_rust() {
