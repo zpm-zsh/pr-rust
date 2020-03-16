@@ -1,35 +1,27 @@
 #!/usr/bin/env zsh
 
-DEPENDENCES_ZSH+=( zpm-zsh/helpers zpm-zsh/colors )
-
-typeset -g RUST_PREFIX
-RUST_PREFIX=${RUST_PREFIX:-" "}
-typeset -g RUST_SUFIX
-RUST_SUFIX=${RUST_SUFIX:-""}
+typeset -g RUST_PREFIX=${RUST_PREFIX:-" "}
+typeset -g RUST_SUFIX=${RUST_SUFIX:-""}
+typeset -g pr_rust=""
 
 if (( $+functions[zpm] )); then
-  zpm zpm-zsh/helpers,inline zpm-zsh/colors,inline
+  zpm zpm-zsh/helpers zpm-zsh/colors
 fi
 
-typeset -g pr_rust
-pr_rust=""
-
-_pr_rust() {
-  if (( $+commands[rustc] )); then
+if (( $+commands[rustc] )); then
+  function _pr_rust() {
     if is-recursive-exist Cargo.toml >/dev/null ; then
-      pr_rust="$RUST_PREFIX"
-      
       rust_version=$(rustc --version | cut -d' ' -f2)
-      pr_rust+="%{$c[red]${c_bold}%}𝗥%{$c_reset%} %{$c[blue]$c_bold%}$rust_version%{$c_reset%}"
-      pr_rust+="$RUST_SUFIX"
+
+      pr_rust="${RUST_PREFIX}%{$c[red]${c_bold}%}𝗥%{$c_reset%} %{$c[blue]$c_bold%}${rust_version}%{$c_reset%}${RUST_SUFIX}"
 
       return 0
     fi
-  fi
-  
-  pr_rust=""
-}
 
-_pr_rust
-autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _pr_rust
+    pr_rust=""
+  }
+
+  autoload -Uz add-zsh-hook
+  add-zsh-hook chpwd _pr_rust
+  _pr_rust
+fi
