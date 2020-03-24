@@ -1,12 +1,9 @@
 #!/usr/bin/env zsh
 
-typeset -g RUST_PREFIX=${RUST_PREFIX:-" "}
-typeset -g RUST_SUFIX=${RUST_SUFIX:-""}
-typeset -g pr_rust=""
+: ${RUST_PREFIX:=" "}
+: ${RUST_SUFIX:=""}
 
-if (( $+functions[zpm] )); then #DO_NOT_INCLUDE_LINE_IN_ZPM_CACHE
-  zpm zpm-zsh/helpers zpm-zsh/colors #DO_NOT_INCLUDE_LINE_IN_ZPM_CACHE
-fi #DO_NOT_INCLUDE_LINE_IN_ZPM_CACHE
+typeset -g pr_rust=""
 
 if (( $+commands[rustc] )); then
   function _pr_rust() {
