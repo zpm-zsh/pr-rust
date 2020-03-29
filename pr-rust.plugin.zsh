@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-: ${RUST_PREFIX:=" "}
-: ${RUST_SUFIX:=""}
+: ${RUST_PREFIX:=' '}
+: ${RUST_SUFIX:=''}
 
-typeset -g pr_rust=""
+typeset -g pr_rust=''
 
 if (( $+commands[rustc] )); then
   function _pr_rust() {
