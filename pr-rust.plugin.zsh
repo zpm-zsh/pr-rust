@@ -10,7 +10,7 @@ if (( $+commands[rustc] )); then
     if is-recursive-exist Cargo.toml; then
       rust_version=$(rustc --version | cut -d' ' -f2)
 
-      pr_rust="${RUST_PREFIX}%{${c[red]}${c[bold]}%}𝗥%{${c[reset]}%} %{${c[blue]}${c[bold]}%}${rust_version}%{${c[reset]}%}${RUST_SUFIX}"
+      pr_rust="${RUST_PREFIX}%{${c[red]}${c[bold]}%}%{${c[reset]}%} %{${c[blue]}${c[bold]}%}${rust_version}%{${c[reset]}%}${RUST_SUFIX}"
 
       return 0
     fi
