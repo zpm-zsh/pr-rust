@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-: ${RUST_PREFIX:=' '}
-: ${RUST_SUFIX:=''}
-
 typeset -g pr_rust=''
 
 if (( $+commands[rustc] )); then
@@ -10,7 +7,7 @@ if (( $+commands[rustc] )); then
     if is-recursive-exist Cargo.toml; then
       rust_version=$(rustc --version | cut -d' ' -f2)
 
-      pr_rust="${RUST_PREFIX}%{${c[red]}${c[bold]}%}RUST%{${c[yellow]}%}:%{${c[blue]}%}${rust_version}%{${c[reset]}%}${RUST_SUFIX}"
+      pr_rust=" %{${c[red]}${c[bold]}%}RUST%{${c[yellow]}%}:%{${c[blue]}%}${rust_version}%{${c[reset]}%}"
 
       return 0
     fi
